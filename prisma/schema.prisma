@@ -1,0 +1,182 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum EventFormat {
+  IN_PERSON
+  VIRTUAL
+  HYBRID
+}
+
+enum EventStatus {
+  DRAFT
+  PUBLISHED
+  CANCELLED
+  COMPLETED
+}
+
+enum RegistrationStatus {
+  CONFIRMED
+  WAITLISTED
+  CANCELLED
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  role          Role      @default(USER)
+  company       String?
+  jobTitle      String?
+  linkedinUrl   String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts      Account[]
+  sessions      Session[]
+  registrations Registration[]
+
+  @@map("users")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+model Event {
+  id               String      @id @default(cuid())
+  slug             String      @unique
+  title            String
+  description      String      @db.Text
+  shortDescription String      @db.VarChar(300)
+  coverImage       String?
+  format           EventFormat
+  status           EventStatus @default(DRAFT)
+  category         String
+  tags             String[]
+
+  venueName       String?
+  venueAddress    String?
+  city            String?
+  virtualUrl      String?
+
+  startDate            DateTime
+  endDate              DateTime
+  timezone             String    @default("America/New_York")
+  registrationDeadline DateTime?
+
+  capacity        Int?
+  waitlistEnabled Boolean @default(true)
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  publishedAt DateTime?
+
+  registrations Registration[]
+  speakers      Speaker[]
+  agenda        AgendaItem[]
+
+  @@index([status, startDate])
+  @@index([category])
+  @@map("events")
+}
+
+model Speaker {
+  id          String  @id @default(cuid())
+  eventId     String
+  name        String
+  title       String
+  company     String
+  bio         String  @db.Text
+  photo       String?
+  linkedinUrl String?
+  twitterUrl  String?
+  order       Int     @default(0)
+
+  event       Event        @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  agendaItems AgendaItem[]
+
+  @@map("speakers")
+}
+
+model AgendaItem {
+  id          String   @id @default(cuid())
+  eventId     String
+  speakerId   String?
+  title       String
+  description String?  @db.Text
+  startTime   DateTime
+  endTime     DateTime
+  type        String
+  order       Int      @default(0)
+
+  event   Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  speaker Speaker? @relation(fields: [speakerId], references: [id], onDelete: SetNull)
+
+  @@map("agenda_items")
+}
+
+model Registration {
+  id        String             @id @default(cuid())
+  userId    String
+  eventId   String
+  status    RegistrationStatus @default(CONFIRMED)
+  notes     String?
+  ticketRef String             @unique @default(cuid())
+  createdAt DateTime           @default(now())
+  updatedAt DateTime           @updatedAt
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, eventId])
+  @@map("registrations")
+}
