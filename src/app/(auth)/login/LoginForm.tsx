@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react"
 import { useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Mail, ArrowRight, Loader2 } from "lucide-react"
+import { EWPLogo } from "@/components/layout/EWPLogo"
 
 export function LoginForm() {
   const searchParams = useSearchParams()
@@ -38,18 +39,18 @@ export function LoginForm() {
   }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4" style={{ backgroundColor: "#F8F5EF" }}>
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <Link href="/" className="text-2xl font-bold tracking-tight text-text-primary">
-            WPE
+          <Link href="/" className="inline-flex justify-center">
+            <EWPLogo size="md" />
           </Link>
-          <p className="mt-2 text-sm text-text-secondary">
-            {sent ? "E-postanı Kontrol Et" : "Hesabına giriş yap"}
+          <p className="mt-4 text-sm" style={{ color: "#4D5F7A" }}>
+            {sent ? "E-postanı Kontrol Et" : "Liderlik yolculuğuna devam et"}
           </p>
         </div>
 
-        <div className="rounded-2xl border border-border bg-background p-8 shadow-card">
+        <div className="rounded-sm border p-8 shadow-card" style={{ backgroundColor: "#FDFBF7", borderColor: "#D9D2C5" }}>
           {sent ? (
             <div className="text-center">
               <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-accent-light">
@@ -111,7 +112,8 @@ export function LoginForm() {
                 <button
                   type="submit"
                   disabled={loading !== null}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-text-primary py-3 text-sm font-semibold text-background transition-all hover:opacity-80 disabled:opacity-50"
+                  className="flex w-full items-center justify-center gap-2 py-3 text-sm font-semibold transition-all hover:opacity-90 disabled:opacity-50"
+                  style={{ backgroundColor: "#0F1E3C", color: "#F8F5EF", borderRadius: "2px", letterSpacing: "0.03em" }}
                 >
                   {loading === "email" ? (
                     <Loader2 className="h-4 w-4 animate-spin" />

@@ -7,10 +7,11 @@ import { motion } from "framer-motion"
 import { Menu, X, ChevronDown, LogOut, LayoutDashboard, User, Shield } from "lucide-react"
 import { useState } from "react"
 import { cn } from "@/lib/utils"
+import { EWPLogo } from "@/components/layout/EWPLogo"
 
 const navLinks = [
-  { href: "/events", label: "Etkinlikler" },
-  { href: "/about", label: "Hakkında" },
+  { href: "/events", label: "Programlar" },
+  { href: "/about", label: "Hakkımızda" },
 ]
 
 export function Navbar() {
@@ -22,12 +23,12 @@ export function Navbar() {
   const isAdmin = session?.user?.role === "ADMIN"
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/98 backdrop-blur-md" style={{ boxShadow: "0 1px 0 0 rgb(15 30 60 / 0.08)" }}>
       <div className="container-wide">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-18 items-center justify-between py-3">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold tracking-tight text-text-primary">WPE</span>
+          <Link href="/" className="flex items-center">
+            <EWPLogo size="sm" />
           </Link>
 
           {/* Desktop nav */}
@@ -37,7 +38,7 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium transition-colors duration-150",
+                  "text-sm font-medium tracking-wide transition-colors duration-150",
                   pathname === link.href
                     ? "text-text-primary"
                     : "text-text-secondary hover:text-text-primary"
@@ -56,7 +57,7 @@ export function Navbar() {
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
                   className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:bg-surface hover:text-text-primary"
                 >
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-accent text-xs font-bold text-white">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-navy text-xs font-bold text-background">
                     {session.user?.name?.[0]?.toUpperCase() ?? "U"}
                   </div>
                   <span className="max-w-[120px] truncate">{session.user?.name ?? session.user?.email}</span>
@@ -65,44 +66,22 @@ export function Navbar() {
 
                 {userMenuOpen && (
                   <>
-                    <div
-                      className="fixed inset-0 z-40"
-                      onClick={() => setUserMenuOpen(false)}
-                    />
+                    <div className="fixed inset-0 z-40" onClick={() => setUserMenuOpen(false)} />
                     <div className="absolute right-0 top-full z-50 mt-1 w-52 overflow-hidden rounded-xl border border-border bg-background shadow-modal">
-                      <Link
-                        href="/dashboard"
-                        className="flex items-center gap-3 px-4 py-3 text-sm text-text-secondary transition-colors hover:bg-surface hover:text-text-primary"
-                        onClick={() => setUserMenuOpen(false)}
-                      >
-                        <LayoutDashboard className="h-4 w-4" />
-                        Panel
+                      <Link href="/dashboard" className="flex items-center gap-3 px-4 py-3 text-sm text-text-secondary transition-colors hover:bg-surface hover:text-text-primary" onClick={() => setUserMenuOpen(false)}>
+                        <LayoutDashboard className="h-4 w-4" /> Panel
                       </Link>
-                      <Link
-                        href="/dashboard/profile"
-                        className="flex items-center gap-3 px-4 py-3 text-sm text-text-secondary transition-colors hover:bg-surface hover:text-text-primary"
-                        onClick={() => setUserMenuOpen(false)}
-                      >
-                        <User className="h-4 w-4" />
-                        Profil
+                      <Link href="/dashboard/profile" className="flex items-center gap-3 px-4 py-3 text-sm text-text-secondary transition-colors hover:bg-surface hover:text-text-primary" onClick={() => setUserMenuOpen(false)}>
+                        <User className="h-4 w-4" /> Profil
                       </Link>
                       {isAdmin && (
-                        <Link
-                          href="/admin"
-                          className="flex items-center gap-3 px-4 py-3 text-sm text-text-secondary transition-colors hover:bg-surface hover:text-text-primary"
-                          onClick={() => setUserMenuOpen(false)}
-                        >
-                          <Shield className="h-4 w-4" />
-                          Admin Paneli
+                        <Link href="/admin" className="flex items-center gap-3 px-4 py-3 text-sm text-text-secondary transition-colors hover:bg-surface hover:text-text-primary" onClick={() => setUserMenuOpen(false)}>
+                          <Shield className="h-4 w-4" /> Admin Paneli
                         </Link>
                       )}
                       <div className="border-t border-border">
-                        <button
-                          onClick={() => signOut({ callbackUrl: "/" })}
-                          className="flex w-full items-center gap-3 px-4 py-3 text-sm text-text-secondary transition-colors hover:bg-surface hover:text-error"
-                        >
-                          <LogOut className="h-4 w-4" />
-                          Çıkış Yap
+                        <button onClick={() => signOut({ callbackUrl: "/" })} className="flex w-full items-center gap-3 px-4 py-3 text-sm text-text-secondary transition-colors hover:bg-surface hover:text-error">
+                          <LogOut className="h-4 w-4" /> Çıkış Yap
                         </button>
                       </div>
                     </div>
@@ -111,23 +90,20 @@ export function Navbar() {
               </div>
             ) : (
               <>
-                <Link
-                  href="/login"
-                  className="text-sm font-medium text-text-secondary transition-colors hover:text-text-primary"
-                >
+                <Link href="/login" className="text-sm font-medium text-text-secondary transition-colors hover:text-text-primary">
                   Giriş Yap
                 </Link>
                 <Link
                   href="/login"
-                  className="rounded-lg bg-text-primary px-4 py-2 text-sm font-semibold text-background transition-all hover:opacity-80"
+                  className="rounded-lg border border-navy bg-navy px-5 py-2 text-sm font-semibold text-background transition-all hover:bg-navy-light"
                 >
-                  Başla
+                  Başvur
                 </Link>
               </>
             )}
           </div>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile toggle */}
           <button
             className="flex h-9 w-9 items-center justify-center rounded-lg text-text-secondary transition-colors hover:bg-surface md:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -152,9 +128,7 @@ export function Navbar() {
                   href={link.href}
                   className={cn(
                     "rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
-                    pathname === link.href
-                      ? "bg-surface text-text-primary"
-                      : "text-text-secondary hover:bg-surface hover:text-text-primary"
+                    pathname === link.href ? "bg-surface text-text-primary" : "text-text-secondary hover:bg-surface hover:text-text-primary"
                   )}
                   onClick={() => setMobileOpen(false)}
                 >
@@ -182,8 +156,8 @@ export function Navbar() {
                   <Link href="/login" className="rounded-lg px-3 py-2.5 text-center text-sm font-medium text-text-secondary hover:bg-surface" onClick={() => setMobileOpen(false)}>
                     Giriş Yap
                   </Link>
-                  <Link href="/login" className="rounded-lg bg-text-primary px-3 py-2.5 text-center text-sm font-semibold text-background" onClick={() => setMobileOpen(false)}>
-                    Başla
+                  <Link href="/login" className="rounded-lg bg-navy px-3 py-2.5 text-center text-sm font-semibold text-background" onClick={() => setMobileOpen(false)}>
+                    Başvur
                   </Link>
                 </div>
               )}

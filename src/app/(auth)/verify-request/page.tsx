@@ -6,7 +6,7 @@ export default function VerifyRequestPage() {
     <div className="flex min-h-screen flex-col items-center justify-center bg-surface px-4">
       <div className="w-full max-w-sm text-center">
         <Link href="/" className="text-2xl font-bold tracking-tight text-text-primary">
-          WPE
+          EWP
         </Link>
 
         <div className="mt-8 rounded-2xl border border-border bg-background p-8 shadow-card">

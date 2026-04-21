@@ -10,7 +10,7 @@ export const authConfig: NextAuthConfig = {
     }),
     Resend({
       apiKey: process.env.RESEND_API_KEY ?? "re_placeholder",
-      from: process.env.RESEND_FROM_EMAIL ?? "WPE Events <onboarding@resend.dev>",
+      from: process.env.RESEND_FROM_EMAIL ?? "EWP Events <onboarding@resend.dev>",
     }),
   ],
   pages: {

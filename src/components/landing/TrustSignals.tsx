@@ -6,17 +6,17 @@ import { ArrowRight } from "lucide-react"
 import { staggerContainer, fadeInUp } from "@/lib/motion"
 
 const partners = [
-  "Meridian Capital",
-  "NovaTech Group",
-  "Apex Ventures",
-  "Blue Horizon",
-  "Citadel Partners",
-  "Summit Advisory",
+  "Boğaziçi Üniversitesi",
+  "INSEAD Alumni",
+  "Harvard Business Network",
+  "McKinsey Alumni Club",
+  "Endeavor Türkiye",
+  "TÜSİAD",
 ]
 
 export function TrustSignals() {
   return (
-    <section className="section-padding bg-surface">
+    <section className="section-padding" style={{ backgroundColor: "#F8F5EF" }}>
       <div className="container-wide">
         <motion.div
           initial="hidden"
@@ -25,41 +25,101 @@ export function TrustSignals() {
           variants={staggerContainer}
           className="text-center"
         >
-          <motion.p variants={fadeInUp} className="text-xs font-semibold uppercase tracking-widest text-text-muted">
-            Önde gelen kuruluşların güvendiği platform
+          <motion.p
+            variants={fadeInUp}
+            className="text-xs uppercase tracking-[0.2em]"
+            style={{ color: "#8A96A8", letterSpacing: "0.18em" }}
+          >
+            İşbirliği Yapılan Kurumlar
           </motion.p>
 
-          {/* Partner logos — text-based since we don't have real logos */}
           <motion.div
             variants={staggerContainer}
-            className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4"
+            className="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-5"
           >
-            {partners.map((name) => (
+            {partners.map((name, i) => (
               <motion.span
                 key={name}
                 variants={fadeInUp}
-                className="text-sm font-semibold tracking-tight text-text-muted"
+                className="text-sm font-medium tracking-wide"
+                style={{
+                  color: "#8A96A8",
+                  fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+                  fontSize: "15px",
+                  letterSpacing: "0.03em",
+                }}
               >
+                {i > 0 && <span className="mr-12 opacity-0 absolute">/</span>}
                 {name}
               </motion.span>
             ))}
           </motion.div>
 
-          {/* CTA */}
-          <motion.div variants={fadeInUp} className="mt-20">
-            <div className="mx-auto max-w-2xl rounded-3xl border border-border bg-background px-8 py-12">
-              <h2 className="text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
-                Ağınızı genişletmeye hazır mısınız?
-              </h2>
-              <p className="mx-auto mt-4 max-w-md text-base text-text-secondary">
-                Önemli bağlantılar kurmak için WPE kullanan binlerce profesyonele katılın.
+          {/* Divider */}
+          <motion.div variants={fadeInUp} className="my-16 flex justify-center">
+            <div className="h-px w-24" style={{ background: "linear-gradient(90deg, transparent, #D9D2C5, transparent)" }} />
+          </motion.div>
+
+          {/* CTA block */}
+          <motion.div variants={fadeInUp}>
+            <div
+              className="relative mx-auto max-w-3xl overflow-hidden px-10 py-16"
+              style={{
+                background: "#0F1E3C",
+                borderRadius: "4px",
+              }}
+            >
+              {/* Gold top border */}
+              <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: "linear-gradient(90deg, transparent, #B8960C 30%, #B8960C 70%, transparent)" }} />
+
+              <p
+                className="text-xs uppercase tracking-[0.2em] mb-5"
+                style={{ color: "#B8960C", fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif", letterSpacing: "0.2em" }}
+              >
+                Bir sonraki adım
               </p>
-              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <h2
+                className="text-4xl font-light md:text-5xl"
+                style={{ fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif", color: "#F8F5EF", lineHeight: 1.1 }}
+              >
+                Liderlik yolculuğunuza
+                <br />
+                <em style={{ fontStyle: "italic", color: "#B8960C" }}>bugün başlayın</em>
+              </h2>
+              <div className="my-6 flex justify-center">
+                <div className="h-px w-12" style={{ background: "linear-gradient(90deg, transparent, #B8960C, transparent)" }} />
+              </div>
+              <p className="mx-auto max-w-md text-base" style={{ color: "rgba(248,245,239,0.6)" }}>
+                EWP programlarına başvurun, geleceğin liderlik ekosisteminin parçası olun.
+              </p>
+              <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
                 <Link
                   href="/events"
-                  className="inline-flex items-center gap-2 rounded-xl bg-accent px-8 py-3.5 text-base font-semibold text-white transition-all hover:bg-accent-hover"
+                  className="inline-flex items-center gap-2.5 px-8 py-3.5 text-sm font-semibold transition-all duration-200 hover:opacity-90"
+                  style={{
+                    background: "#B8960C",
+                    color: "#F8F5EF",
+                    borderRadius: "2px",
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase",
+                    fontSize: "12px",
+                  }}
                 >
-                  Yaklaşan Etkinlikleri Keşfet <ArrowRight className="h-4 w-4" />
+                  Programları Görüntüle <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+                <Link
+                  href="/about"
+                  className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-medium transition-all duration-200"
+                  style={{
+                    color: "rgba(248,245,239,0.6)",
+                    border: "1px solid rgba(248,245,239,0.15)",
+                    borderRadius: "2px",
+                    letterSpacing: "0.05em",
+                    textTransform: "uppercase",
+                    fontSize: "12px",
+                  }}
+                >
+                  Daha Fazla Bilgi
                 </Link>
               </div>
             </div>

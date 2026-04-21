@@ -2,8 +2,8 @@ import { Navbar } from "@/components/layout/Navbar"
 import { Footer } from "@/components/layout/Footer"
 
 export const metadata = {
-  title: "Hakkında",
-  description: "WPE hakkında ve anlamlı profesyonel bağlantılar kurma misyonumuz hakkında bilgi edinin.",
+  title: "Hakkımızda",
+  description: "EWP — Next Generation Leadership Academy misyonu ve değerleri hakkında bilgi edinin.",
 }
 
 export default function AboutPage() {
@@ -11,52 +11,66 @@ export default function AboutPage() {
     <>
       <Navbar />
       <main>
-        <section className="section-padding border-b border-border">
+        <section className="section-padding border-b border-border" style={{ backgroundColor: "#F8F5EF" }}>
           <div className="container-wide">
             <div className="mx-auto max-w-3xl">
-              <p className="text-xs font-semibold uppercase tracking-widest text-accent">WPE Hakkında</p>
-              <h1 className="mt-3 text-4xl font-bold tracking-tight text-text-primary md:text-5xl">
-                Doğru ortamın her şeyi değiştirdiğine inanıyoruz
-              </h1>
-              <p className="mt-6 text-lg leading-relaxed text-text-secondary">
-                WPE, basit bir öncülden yola çıkarak kuruldu: networking etkinliklerinin çoğu zaman kaybından başka bir şey değil.
-                Çok fazla insan, bağlam yok, yapı yok — sadece garip küçük sohbetler ve tekrarlanan kartvizitler.
+              <p
+                className="text-xs uppercase tracking-[0.2em]"
+                style={{ color: "#B8960C", fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif", letterSpacing: "0.2em" }}
+              >
+                EWP Hakkında
               </p>
-              <p className="mt-4 text-lg leading-relaxed text-text-secondary">
-                Bunu değiştirmeye çıktık. Her WPE etkinliği özenle seçilir — katılımcılar, mekan, format,
-                sohbetler. Etkinliklerimiz networking kokteyllerinden çok özel akşam yemeklerine benziyor,
-                çünkü en iyi bağlantılar ortam derinlik için tasarlandığında gerçekleşir.
+              <h1
+                className="mt-4 text-5xl font-light md:text-6xl"
+                style={{ fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif", color: "#0F1E3C", lineHeight: 1.1 }}
+              >
+                Liderlik bir <em style={{ fontStyle: "italic", color: "#B8960C" }}>yolculuktur</em>,
+                <br />varış noktası değil
+              </h1>
+              <div className="my-6 w-12 h-px" style={{ background: "linear-gradient(90deg, #B8960C, transparent)" }} />
+              <p className="mt-4 text-lg leading-relaxed" style={{ color: "#4D5F7A" }}>
+                EWP (Executive Workshop Programs), üst düzey yöneticilerin ve geleceğin liderlerinin stratejik yetkinliklerini
+                geliştirdiği, küresel düşünce liderleriyle bir araya geldiği seçkin bir liderlik akademisidir.
+              </p>
+              <p className="mt-4 text-lg leading-relaxed" style={{ color: "#4D5F7A" }}>
+                Her programımız yalnızca davetliye özel ya da titizlikle incelenerek kabul edilen katılımcılarla gerçekleşir.
+                Amacımız tek: doğru insanları, doğru içerikle, doğru ortamda buluşturmak.
               </p>
             </div>
           </div>
         </section>
 
-        <section className="section-padding">
+        <section className="section-padding" style={{ backgroundColor: "#F8F5EF" }}>
           <div className="container-wide">
             <div className="mx-auto max-w-3xl">
-              <h2 className="text-2xl font-bold tracking-tight text-text-primary">Değerlerimiz</h2>
+              <h2
+                className="text-3xl font-light"
+                style={{ fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif", color: "#0F1E3C" }}
+              >
+                Temel İlkelerimiz
+              </h2>
               <div className="mt-8 space-y-6">
                 {[
                   {
-                    title: "Kalite, nicelikten önemlidir",
-                    body: "Katılımı kasıtlı olarak sınırlıyoruz. Küçük odalar daha iyi sohbetler yaratır.",
+                    title: "Kalite, nicelikten önce gelir",
+                    body: "Katılımı kasıtlı olarak sınırlıyoruz. Daha küçük gruplar, daha derin dönüşümler yaratır.",
                   },
                   {
                     title: "Zamanınıza saygı",
-                    body: "Her program maddesi bir amaca hizmet eder. Zamanında başlarız, zamanında biteriz ve tek bir dakikayı boşa harcamayız.",
+                    body: "Her program oturumu bir amaca hizmet eder. Zamanında başlarız, zamanında biteriz.",
                   },
                   {
-                    title: "Farklı perspektifler",
-                    body: "En değerli bağlantılar sektörler ve geçmişler arasında gerçekleşir. Uyum için değil, çeşitlilik için seçim yaparız.",
+                    title: "Çeşitli perspektifler",
+                    body: "En değerli liderlik dersleri, sektörler ve geçmişler arasındaki diyalogdan doğar.",
                   },
                   {
-                    title: "Takip ve süreklilik",
-                    body: "Etkinlikler sadece bir başlangıçtır. Oda boşaldıktan sonra da bağlantıda kalmanıza ve ivmeyi korumanıza yardımcı oluruz.",
+                    title: "Kalıcı etki",
+                    body: "Program sonrasında da mezunlarımızla bağlantıda kalarak öğrenmeyi ve büyümeyi sürdürürüz.",
                   },
                 ].map((v) => (
-                  <div key={v.title} className="border-l-2 border-accent pl-5">
-                    <h3 className="font-semibold text-text-primary">{v.title}</h3>
-                    <p className="mt-1 text-text-secondary">{v.body}</p>
+                  <div key={v.title} className="border-l-2 pl-5" style={{ borderColor: "#B8960C" }}>
+                    <h3 className="font-semibold" style={{ color: "#0F1E3C" }}>{v.title}</h3>
+                    <p className="mt-1" style={{ color: "#4D5F7A" }}>{v.body}</p>
                   </div>
                 ))}
               </div>

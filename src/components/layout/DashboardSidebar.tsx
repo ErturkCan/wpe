@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation"
 import { LayoutDashboard, Calendar, User, LogOut } from "lucide-react"
 import { signOut } from "next-auth/react"
 import { cn } from "@/lib/utils"
+import { EWPLogo } from "@/components/layout/EWPLogo"
 
 const links = [
   { href: "/dashboard", label: "Genel Bakış", icon: LayoutDashboard, exact: true },
@@ -18,9 +19,7 @@ export function DashboardSidebar() {
   return (
     <aside className="flex w-56 shrink-0 flex-col border-r border-border bg-surface">
       <div className="p-5">
-        <Link href="/" className="text-lg font-bold tracking-tight text-text-primary">
-          WPE
-        </Link>
+        <Link href="/"><EWPLogo size="sm" /></Link>
       </div>
 
       <nav className="flex-1 space-y-0.5 px-3">

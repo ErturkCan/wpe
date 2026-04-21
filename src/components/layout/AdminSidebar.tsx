@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { LayoutDashboard, Calendar, Users, ClipboardList, ArrowLeft } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { EWPLogo } from "@/components/layout/EWPLogo"
 
 const links = [
   { href: "/admin", label: "Genel Bakış", icon: LayoutDashboard, exact: true },
@@ -18,11 +19,9 @@ export function AdminSidebar() {
   return (
     <aside className="flex w-56 shrink-0 flex-col border-r border-border bg-surface">
       <div className="p-5">
-        <Link href="/" className="text-lg font-bold tracking-tight text-text-primary">
-          WPE
-        </Link>
-        <span className="mt-0.5 block text-xs font-semibold uppercase tracking-widest text-accent">
-          Admin
+        <Link href="/"><EWPLogo size="sm" /></Link>
+        <span className="mt-2 block text-xs font-semibold uppercase tracking-widest text-accent">
+          Admin Panel
         </span>
       </div>
 

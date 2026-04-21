@@ -35,9 +35,9 @@ export async function sendRegistrationConfirmation({
     return
   }
   return resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL ?? "WPE Events <onboarding@resend.dev>",
+    from: process.env.RESEND_FROM_EMAIL ?? "EWP Events <onboarding@resend.dev>",
     to,
-    subject: `You're registered for ${event.title} — WPE`,
+    subject: `You're registered for ${event.title} — EWP`,
     html: `
 <!DOCTYPE html>
 <html>
@@ -45,7 +45,7 @@ export async function sendRegistrationConfirmation({
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f9f9f7; margin: 0; padding: 40px 20px;">
   <div style="max-width: 560px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e8e8e4;">
     <div style="background: #0a0a0a; padding: 32px 40px;">
-      <p style="color: #ffffff; font-size: 20px; font-weight: 700; margin: 0; letter-spacing: -0.02em;">WPE</p>
+      <p style="color: #ffffff; font-size: 20px; font-weight: 700; margin: 0; letter-spacing: -0.02em;">EWP</p>
     </div>
     <div style="padding: 40px;">
       <p style="color: #6b6b6b; font-size: 14px; margin: 0 0 8px;">Registration confirmed</p>
@@ -90,9 +90,9 @@ export async function sendEventReminder({
     return
   }
   return resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL ?? "WPE Events <onboarding@resend.dev>",
+    from: process.env.RESEND_FROM_EMAIL ?? "EWP Events <onboarding@resend.dev>",
     to,
-    subject: `Tomorrow: ${event.title} — WPE`,
+    subject: `Tomorrow: ${event.title} — EWP`,
     html: `
 <!DOCTYPE html>
 <html>
@@ -100,7 +100,7 @@ export async function sendEventReminder({
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f9f9f7; margin: 0; padding: 40px 20px;">
   <div style="max-width: 560px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e8e8e4;">
     <div style="background: #0a0a0a; padding: 32px 40px;">
-      <p style="color: #ffffff; font-size: 20px; font-weight: 700; margin: 0;">WPE</p>
+      <p style="color: #ffffff; font-size: 20px; font-weight: 700; margin: 0;">EWP</p>
     </div>
     <div style="padding: 40px;">
       <p style="color: #c9821a; font-size: 14px; font-weight: 600; margin: 0 0 8px; text-transform: uppercase; letter-spacing: 0.05em;">Reminder — Tomorrow</p>

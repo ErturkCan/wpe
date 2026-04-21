@@ -18,7 +18,7 @@ interface EventsPageProps {
 
 export const metadata = {
   title: "Yaklaşan Etkinlikler",
-  description: "WPE iş dünyası networking etkinliklerini keşfedin ve kayıt olun.",
+  description: "EWP iş dünyası networking etkinliklerini keşfedin ve kayıt olun.",
 }
 
 async function EventsContent({ searchParams }: EventsPageProps) {
