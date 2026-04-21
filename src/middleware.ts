@@ -1,5 +1,8 @@
-import { auth } from "@/lib/auth"
+import NextAuth from "next-auth"
+import { authConfig } from "@/lib/auth.config"
 import { NextResponse } from "next/server"
+
+const { auth } = NextAuth(authConfig)
 
 export default auth((req) => {
   const { pathname } = req.nextUrl
@@ -18,14 +21,9 @@ export default auth((req) => {
     }
   }
 
-  if (pathname.startsWith("/events") && pathname.endsWith("/register") && !session) {
-    const callbackUrl = encodeURIComponent(pathname)
-    return NextResponse.redirect(new URL(`/login?callbackUrl=${callbackUrl}`, req.url))
-  }
-
   return NextResponse.next()
 })
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/admin/:path*", "/events/:path*/register"],
+  matcher: ["/dashboard/:path*", "/admin/:path*"],
 }
