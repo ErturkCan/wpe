@@ -2,162 +2,160 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { ArrowRight } from "lucide-react"
 import { fadeInUp, staggerContainer } from "@/lib/motion"
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden" style={{ backgroundColor: "#0F1E3C" }}>
-      {/* Subtle texture */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
-        style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, #B8960C 1px, transparent 0)",
-          backgroundSize: "40px 40px",
-        }}
-      />
-      {/* Gradient overlay bottom */}
-      <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-32"
-        style={{ background: "linear-gradient(to bottom, transparent, #0F1E3C)" }}
-      />
-      {/* Gold accent line top */}
-      <div className="absolute top-0 left-0 right-0 h-0.5" style={{ background: "linear-gradient(90deg, transparent, #B8960C 30%, #B8960C 70%, transparent)" }} />
+    <section
+      className="relative overflow-hidden"
+      style={{ backgroundColor: "#0F1E3C", minHeight: "92vh", display: "flex", flexDirection: "column", justifyContent: "space-between" }}
+    >
+      {/* Spotlight glow effects */}
+      <div className="pointer-events-none absolute inset-0">
+        <div
+          className="absolute"
+          style={{
+            width: "600px",
+            height: "600px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(184,150,12,0.08) 0%, transparent 70%)",
+            top: "10%",
+            left: "20%",
+            transform: "translate(-50%, -50%)",
+          }}
+        />
+        <div
+          className="absolute"
+          style={{
+            width: "500px",
+            height: "500px",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(184,150,12,0.05) 0%, transparent 70%)",
+            top: "60%",
+            right: "10%",
+          }}
+        />
+      </div>
 
-      <div className="container-wide relative py-32 md:py-48">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="mx-auto max-w-5xl text-center"
-        >
-          {/* Academy label */}
-          <motion.div variants={fadeInUp} className="mb-8 flex items-center justify-center">
-            <span
-              className="inline-flex items-center gap-3 px-5 py-2 text-xs tracking-[0.2em] uppercase"
-              style={{
-                color: "#B8960C",
-                border: "1px solid rgba(184,150,12,0.3)",
-                borderRadius: "2px",
-                fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-                fontWeight: 500,
-                fontSize: "11px",
-                letterSpacing: "0.25em",
-              }}
-            >
-              <span className="h-px w-5" style={{ background: "#B8960C" }} />
-              Next Generation Leadership Academy
-              <span className="h-px w-5" style={{ background: "#B8960C" }} />
-            </span>
-          </motion.div>
+      {/* Top gold accent line */}
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #B8960C 30%, #B8960C 70%, transparent)" }} />
 
-          {/* Main headline — serif */}
-          <motion.h1
-            variants={fadeInUp}
+      {/* Main content */}
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+        className="container-wide relative flex flex-1 flex-col items-center justify-center py-24 text-center"
+      >
+        {/* Label */}
+        <motion.div variants={fadeInUp} className="mb-10">
+          <span
             style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "12px",
+              color: "#B8960C",
               fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-              fontWeight: 300,
-              fontSize: "clamp(3rem, 8vw, 6rem)",
-              lineHeight: 1.05,
-              letterSpacing: "-0.01em",
-              color: "#F8F5EF",
+              fontSize: "11px",
+              fontWeight: 500,
+              letterSpacing: "0.28em",
+              textTransform: "uppercase",
             }}
           >
-            Liderliği
-            <br />
-            <em style={{ fontStyle: "italic", color: "#B8960C" }}>Yeniden Tanımla</em>
-          </motion.h1>
-
-          {/* Gold rule */}
-          <motion.div variants={fadeInUp} className="my-8 flex justify-center">
-            <div className="h-px w-16" style={{ background: "linear-gradient(90deg, transparent, #B8960C, transparent)" }} />
-          </motion.div>
-
-          {/* Subheadline */}
-          <motion.p
-            variants={fadeInUp}
-            className="mx-auto max-w-2xl text-base md:text-lg"
-            style={{ color: "rgba(248,245,239,0.65)", lineHeight: 1.8, letterSpacing: "0.01em" }}
-          >
-            EWP, üst düzey yöneticiler ve geleceğin liderlerini bir araya getiren, stratejik düşünce,
-            etki ve dönüşüm odaklı özel atölye programları sunan seçkin bir liderlik akademisidir.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            variants={fadeInUp}
-            className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
-          >
-            <Link
-              href="/events"
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 text-sm font-semibold transition-all duration-200"
-              style={{
-                background: "#B8960C",
-                color: "#F8F5EF",
-                borderRadius: "2px",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-                fontSize: "12px",
-              }}
-            >
-              Programları Keşfet
-              <ArrowRight className="h-3.5 w-3.5" />
-            </Link>
-            <Link
-              href="/about"
-              className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-medium transition-all duration-200"
-              style={{
-                color: "rgba(248,245,239,0.7)",
-                border: "1px solid rgba(248,245,239,0.2)",
-                borderRadius: "2px",
-                letterSpacing: "0.05em",
-                textTransform: "uppercase",
-                fontSize: "12px",
-              }}
-            >
-              Akademi Hakkında
-            </Link>
-          </motion.div>
-
-          {/* Stats row */}
-          <motion.div
-            variants={fadeInUp}
-            className="mt-20 flex flex-col items-center justify-center gap-0 sm:flex-row"
-          >
-            {[
-              { value: "500+", label: "Mezun Lider" },
-              { value: "48", label: "Program" },
-              { value: "12", label: "Yıllık Deneyim" },
-              { value: "4.9", label: "Memnuniyet" },
-            ].map((stat, i) => (
-              <div key={stat.label} className="flex items-center">
-                <div className="px-8 py-4 text-center">
-                  <p
-                    style={{
-                      fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-                      fontSize: "2rem",
-                      fontWeight: 600,
-                      color: "#B8960C",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {stat.value}
-                  </p>
-                  <p
-                    className="mt-1 text-xs uppercase tracking-widest"
-                    style={{ color: "rgba(248,245,239,0.45)", letterSpacing: "0.15em" }}
-                  >
-                    {stat.label}
-                  </p>
-                </div>
-                {i < 3 && (
-                  <div className="hidden h-8 w-px sm:block" style={{ background: "rgba(184,150,12,0.25)" }} />
-                )}
-              </div>
-            ))}
-          </motion.div>
+            <span style={{ display: "block", width: "24px", height: "1px", background: "#B8960C" }} />
+            Executive Workshop Programs
+            <span style={{ display: "block", width: "24px", height: "1px", background: "#B8960C" }} />
+          </span>
         </motion.div>
-      </div>
+
+        {/* MASSIVE display heading */}
+        <motion.h1
+          variants={fadeInUp}
+          style={{
+            fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+            fontWeight: 300,
+            fontSize: "clamp(4rem, 12vw, 9rem)",
+            lineHeight: 0.95,
+            letterSpacing: "-0.02em",
+            color: "#F8F5EF",
+          }}
+        >
+          Next
+          <br />
+          <em style={{ fontStyle: "italic", color: "#B8960C" }}>Generation</em>
+          <br />
+          Leadership
+        </motion.h1>
+
+        {/* Subtext */}
+        <motion.p
+          variants={fadeInUp}
+          className="mx-auto mt-8 max-w-lg"
+          style={{
+            color: "rgba(248,245,239,0.5)",
+            fontSize: "15px",
+            lineHeight: 1.8,
+            letterSpacing: "0.02em",
+          }}
+        >
+          Geleceğin liderlerini bugünden şekillendiren, seçkin yöneticiler için
+          tasarlanmış dönüştürücü atölye programları.
+        </motion.p>
+
+        {/* Pill CTA */}
+        <motion.div variants={fadeInUp} className="mt-12">
+          <Link
+            href="/events"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "10px",
+              background: "#B8960C",
+              color: "#0F1E3C",
+              padding: "18px 40px",
+              borderRadius: "9999px",
+              fontSize: "13px",
+              fontWeight: 700,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              transition: "all 0.2s",
+            }}
+          >
+            → Programları Keşfet
+          </Link>
+        </motion.div>
+      </motion.div>
+
+      {/* Bottom bar — date left, location right */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.6 }}
+        className="container-wide relative flex items-center justify-between pb-8"
+      >
+        <span
+          style={{
+            color: "rgba(248,245,239,0.35)",
+            fontSize: "12px",
+            letterSpacing: "0.15em",
+            textTransform: "uppercase",
+            fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+          }}
+        >
+          İstanbul · 2025
+        </span>
+        <div className="flex items-center gap-6">
+          {[
+            { value: "500+", label: "Mezun" },
+            { value: "48", label: "Program" },
+            { value: "12 Yıl", label: "Deneyim" },
+          ].map((s, i) => (
+            <span key={i} style={{ color: "rgba(248,245,239,0.35)", fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+              <strong style={{ color: "#B8960C", fontWeight: 600 }}>{s.value}</strong>{" "}{s.label}
+            </span>
+          ))}
+        </div>
+      </motion.div>
     </section>
   )
 }

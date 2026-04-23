@@ -1,5 +1,4 @@
 import { Navbar } from "@/components/layout/Navbar"
-import { Footer } from "@/components/layout/Footer"
 import { HeroSection } from "@/components/landing/HeroSection"
 import { ValueProposition } from "@/components/landing/ValueProposition"
 import { FeaturedEvents } from "@/components/landing/FeaturedEvents"
@@ -23,7 +22,7 @@ export default async function LandingPage() {
       },
     })
   } catch {
-    // DB not connected yet — show empty state
+    // DB not connected — show empty state
   }
 
   return (
@@ -36,7 +35,6 @@ export default async function LandingPage() {
         <Testimonials />
         <TrustSignals />
       </main>
-      <Footer />
     </>
   )
 }
