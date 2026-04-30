@@ -8,154 +8,216 @@ export function HeroSection() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ backgroundColor: "#0F1E3C", minHeight: "92vh", display: "flex", flexDirection: "column", justifyContent: "space-between" }}
+      style={{ backgroundColor: "#0F1E3C", minHeight: "100vh", display: "flex", flexDirection: "column" }}
     >
-      {/* Spotlight glow effects */}
-      <div className="pointer-events-none absolute inset-0">
-        <div
-          className="absolute"
-          style={{
-            width: "600px",
-            height: "600px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(184,150,12,0.08) 0%, transparent 70%)",
-            top: "10%",
-            left: "20%",
-            transform: "translate(-50%, -50%)",
-          }}
-        />
-        <div
-          className="absolute"
-          style={{
-            width: "500px",
-            height: "500px",
-            borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(184,150,12,0.05) 0%, transparent 70%)",
-            top: "60%",
-            right: "10%",
-          }}
-        />
+      {/* Background abstract grid */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Gold grid lines */}
+        <div style={{
+          position: "absolute", inset: 0,
+          backgroundImage: "linear-gradient(rgba(184,150,12,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(184,150,12,0.04) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
+        }} />
+        {/* Spotlight glow left */}
+        <div style={{
+          position: "absolute", width: "700px", height: "700px", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(184,150,12,0.07) 0%, transparent 65%)",
+          top: "30%", left: "25%", transform: "translate(-50%,-50%)",
+        }} />
+        {/* Accent glow right */}
+        <div style={{
+          position: "absolute", width: "500px", height: "500px", borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(184,150,12,0.05) 0%, transparent 65%)",
+          top: "60%", right: "5%",
+        }} />
       </div>
 
-      {/* Top gold accent line */}
+      {/* Top gold line */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #B8960C 30%, #B8960C 70%, transparent)" }} />
 
-      {/* Main content */}
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        animate="visible"
-        className="container-wide relative flex flex-1 flex-col items-center justify-center py-24 text-center"
-      >
-        {/* Label */}
-        <motion.div variants={fadeInUp} className="mb-10">
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "12px",
-              color: "#B8960C",
-              fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-              fontSize: "11px",
-              fontWeight: 500,
-              letterSpacing: "0.28em",
-              textTransform: "uppercase",
-            }}
+      {/* Main two-column layout */}
+      <div className="container-wide relative flex flex-1 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 w-full min-h-screen items-center">
+
+          {/* LEFT — text content */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+            className="flex flex-col justify-center py-32 lg:py-0 pr-0 lg:pr-16"
           >
-            <span style={{ display: "block", width: "24px", height: "1px", background: "#B8960C" }} />
-            Executive Workshop Programs
-            <span style={{ display: "block", width: "24px", height: "1px", background: "#B8960C" }} />
-          </span>
-        </motion.div>
+            {/* Label */}
+            <motion.div variants={fadeInUp} className="mb-10">
+              <span style={{
+                display: "inline-flex", alignItems: "center", gap: "10px",
+                color: "#B8960C",
+                fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+                fontSize: "11px", fontWeight: 500,
+                letterSpacing: "0.28em", textTransform: "uppercase",
+              }}>
+                <span style={{ display: "block", width: "24px", height: "1px", background: "#B8960C" }} />
+                Executive Workshop Programs
+              </span>
+            </motion.div>
 
-        {/* MASSIVE display heading */}
-        <motion.h1
-          variants={fadeInUp}
-          style={{
-            fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-            fontWeight: 300,
-            fontSize: "clamp(4rem, 12vw, 9rem)",
-            lineHeight: 0.95,
-            letterSpacing: "-0.02em",
-            color: "#F8F5EF",
-          }}
-        >
-          Next
-          <br />
-          <em style={{ fontStyle: "italic", color: "#B8960C" }}>Generation</em>
-          <br />
-          Leadership
-        </motion.h1>
+            {/* Display heading */}
+            <motion.h1
+              variants={fadeInUp}
+              style={{
+                fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+                fontWeight: 300,
+                fontSize: "clamp(3.5rem, 8vw, 7.5rem)",
+                lineHeight: 0.95,
+                letterSpacing: "-0.02em",
+                color: "#F8F5EF",
+              }}
+            >
+              Next
+              <br />
+              <em style={{ fontStyle: "italic", color: "#B8960C" }}>Generation</em>
+              <br />
+              Leadership
+            </motion.h1>
 
-        {/* Subtext */}
-        <motion.p
-          variants={fadeInUp}
-          className="mx-auto mt-8 max-w-lg"
-          style={{
-            color: "rgba(248,245,239,0.5)",
-            fontSize: "15px",
-            lineHeight: 1.8,
-            letterSpacing: "0.02em",
-          }}
-        >
-          Geleceğin liderlerini bugünden şekillendiren, seçkin yöneticiler için
-          tasarlanmış dönüştürücü atölye programları.
-        </motion.p>
+            {/* Sub */}
+            <motion.p
+              variants={fadeInUp}
+              className="mt-8 max-w-md"
+              style={{ color: "rgba(248,245,239,0.55)", fontSize: "15px", lineHeight: 1.8, letterSpacing: "0.02em" }}
+            >
+              Geleceğin liderlerini bugünden şekillendiren, seçkin yöneticiler için
+              tasarlanmış dönüştürücü atölye programları.
+            </motion.p>
 
-        {/* Pill CTA */}
-        <motion.div variants={fadeInUp} className="mt-12">
-          <Link
-            href="/events"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "10px",
-              background: "#B8960C",
-              color: "#0F1E3C",
-              padding: "18px 40px",
-              borderRadius: "9999px",
-              fontSize: "13px",
-              fontWeight: 700,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              transition: "all 0.2s",
-            }}
+            {/* CTAs */}
+            <motion.div variants={fadeInUp} className="mt-12 flex flex-wrap gap-4">
+              <Link
+                href="/events"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: "10px",
+                  background: "#B8960C", color: "#0F1E3C",
+                  padding: "18px 40px", borderRadius: "9999px",
+                  fontSize: "13px", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase",
+                }}
+              >
+                → Programları Keşfet
+              </Link>
+              <Link
+                href="/about"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: "10px",
+                  color: "rgba(248,245,239,0.55)",
+                  padding: "18px 24px",
+                  fontSize: "13px", fontWeight: 500, letterSpacing: "0.1em", textTransform: "uppercase",
+                  border: "1px solid rgba(255,255,255,0.1)", borderRadius: "9999px",
+                }}
+              >
+                Hakkımızda
+              </Link>
+            </motion.div>
+
+            {/* Inline stats */}
+            <motion.div
+              variants={fadeInUp}
+              className="mt-16 flex items-center gap-10"
+              style={{ borderTop: "1px solid rgba(255,255,255,0.07)", paddingTop: "2rem" }}
+            >
+              {[
+                { value: "500+", label: "Mezun Yönetici" },
+                { value: "48", label: "Program" },
+                { value: "12 Yıl", label: "Deneyim" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <p style={{
+                    fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+                    fontSize: "28px", fontWeight: 600, color: "#B8960C", lineHeight: 1,
+                  }}>{s.value}</p>
+                  <p style={{ fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "rgba(248,245,239,0.35)", marginTop: "4px" }}>{s.label}</p>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* RIGHT — abstract visual panel */}
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            className="hidden lg:flex items-center justify-center relative"
+            style={{ minHeight: "100vh" }}
           >
-            → Programları Keşfet
-          </Link>
-        </motion.div>
-      </motion.div>
+            {/* Geometric panel */}
+            <div className="relative w-full h-full flex items-center justify-center">
+              {/* Outer frame */}
+              <div style={{
+                position: "absolute", inset: "80px 40px",
+                border: "1px solid rgba(184,150,12,0.15)",
+                borderRadius: "4px",
+              }} />
+              {/* Inner accent rect */}
+              <div style={{
+                position: "absolute", inset: "120px 80px",
+                border: "1px solid rgba(184,150,12,0.08)",
+                borderRadius: "4px",
+              }} />
 
-      {/* Bottom bar — date left, location right */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.6 }}
-        className="container-wide relative flex items-center justify-between pb-8"
-      >
-        <span
-          style={{
-            color: "rgba(248,245,239,0.35)",
-            fontSize: "12px",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-          }}
-        >
-          İstanbul · 2025
-        </span>
-        <div className="flex items-center gap-6">
-          {[
-            { value: "500+", label: "Mezun" },
-            { value: "48", label: "Program" },
-            { value: "12 Yıl", label: "Deneyim" },
-          ].map((s, i) => (
-            <span key={i} style={{ color: "rgba(248,245,239,0.35)", fontSize: "12px", letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              <strong style={{ color: "#B8960C", fontWeight: 600 }}>{s.value}</strong>{" "}{s.label}
-            </span>
-          ))}
+              {/* Center emblem */}
+              <div className="relative flex flex-col items-center gap-6">
+                {/* Gold bracket logo */}
+                <div style={{
+                  fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+                  fontSize: "80px", fontWeight: 600, color: "rgba(184,150,12,0.15)",
+                  letterSpacing: "-0.02em", lineHeight: 1,
+                  userSelect: "none",
+                }}>
+                  [EWP]
+                </div>
+                <div style={{ width: "1px", height: "60px", background: "linear-gradient(to bottom, #B8960C, transparent)" }} />
+                <p style={{
+                  fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+                  fontSize: "12px", letterSpacing: "0.3em", textTransform: "uppercase",
+                  color: "rgba(184,150,12,0.4)",
+                }}>
+                  İstanbul · 2025
+                </p>
+              </div>
+
+              {/* Decorative dots */}
+              {[
+                { top: "80px", left: "40px" },
+                { top: "80px", right: "40px" },
+                { bottom: "80px", left: "40px" },
+                { bottom: "80px", right: "40px" },
+              ].map((pos, i) => (
+                <div key={i} style={{
+                  position: "absolute", width: "6px", height: "6px", borderRadius: "50%",
+                  background: "#B8960C", opacity: 0.4, ...pos,
+                }} />
+              ))}
+
+              {/* Floating quote */}
+              <div style={{
+                position: "absolute", bottom: "140px", left: "60px", right: "60px",
+                padding: "24px 28px",
+                background: "rgba(184,150,12,0.06)",
+                border: "1px solid rgba(184,150,12,0.12)",
+                borderRadius: "4px",
+              }}>
+                <p style={{
+                  fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+                  fontSize: "15px", fontStyle: "italic", color: "rgba(248,245,239,0.5)", lineHeight: 1.6,
+                }}>
+                  "Liderlik, bir pozisyon değil —<br />bir sorumluluk bilincidir."
+                </p>
+                <p style={{ fontSize: "11px", letterSpacing: "0.1em", color: "rgba(184,150,12,0.5)", marginTop: "12px", textTransform: "uppercase" }}>
+                  EWP · Executive Workshop Programs
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
         </div>
-      </motion.div>
+      </div>
     </section>
   )
 }

@@ -1,7 +1,9 @@
 import { Navbar } from "@/components/layout/Navbar"
 import { HeroSection } from "@/components/landing/HeroSection"
-import { ValueProposition } from "@/components/landing/ValueProposition"
+import { StatsSection } from "@/components/landing/StatsSection"
+import { AboutSection } from "@/components/landing/AboutSection"
 import { FeaturedEvents } from "@/components/landing/FeaturedEvents"
+import { SpeakersSection } from "@/components/landing/SpeakersSection"
 import { Testimonials } from "@/components/landing/Testimonials"
 import { TrustSignals } from "@/components/landing/TrustSignals"
 import { prisma } from "@/lib/prisma"
@@ -30,8 +32,10 @@ export default async function LandingPage() {
       <Navbar />
       <main>
         <HeroSection />
-        <ValueProposition />
+        <StatsSection />
+        <AboutSection />
         <FeaturedEvents events={featuredEvents} />
+        <SpeakersSection />
         <Testimonials />
         <TrustSignals />
       </main>
