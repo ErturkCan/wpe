@@ -138,72 +138,34 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* RIGHT — abstract visual panel */}
+          {/* RIGHT — quote panel */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:flex items-center justify-center relative"
-            style={{ minHeight: "100vh" }}
+            className="hidden lg:flex items-center justify-center"
           >
-            {/* Geometric panel */}
-            <div className="relative w-full h-full flex items-center justify-center">
-              {/* Outer frame */}
-              <div style={{
-                position: "absolute", inset: "80px 40px",
-                border: "1px solid rgba(184,150,12,0.15)",
-                borderRadius: "4px",
-              }} />
-              {/* Inner accent rect */}
-              <div style={{
-                position: "absolute", inset: "120px 80px",
-                border: "1px solid rgba(184,150,12,0.08)",
-                borderRadius: "4px",
-              }} />
-
-              {/* Center label */}
-              <div className="relative flex flex-col items-center gap-4">
-                <p style={{
-                  fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-                  fontSize: "12px", letterSpacing: "0.3em", textTransform: "uppercase",
-                  color: "rgba(184,150,12,0.4)",
-                }}>
-                  İstanbul · 2025
-                </p>
-                <div style={{ width: "1px", height: "40px", background: "linear-gradient(to bottom, #B8960C, transparent)" }} />
-              </div>
-
-              {/* Decorative dots */}
-              {[
-                { top: "80px", left: "40px" },
-                { top: "80px", right: "40px" },
-                { bottom: "80px", left: "40px" },
-                { bottom: "80px", right: "40px" },
-              ].map((pos, i) => (
-                <div key={i} style={{
-                  position: "absolute", width: "6px", height: "6px", borderRadius: "50%",
-                  background: "#B8960C", opacity: 0.4, ...pos,
-                }} />
-              ))}
-
-              {/* Floating quote */}
-              <div style={{
-                position: "absolute", bottom: "140px", left: "60px", right: "60px",
-                padding: "24px 28px",
-                background: "rgba(184,150,12,0.06)",
-                border: "1px solid rgba(184,150,12,0.12)",
-                borderRadius: "4px",
+            <div style={{
+              padding: "3rem",
+              background: "rgba(184,150,12,0.06)",
+              border: "1px solid rgba(184,150,12,0.15)",
+              borderRadius: "4px",
+              maxWidth: "420px",
+            }}>
+              <p style={{
+                fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+                fontSize: "13px", letterSpacing: "0.2em", textTransform: "uppercase",
+                color: "#B8960C", marginBottom: "1.5rem",
               }}>
-                <p style={{
-                  fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-                  fontSize: "15px", fontStyle: "italic", color: "rgba(248,245,239,0.5)", lineHeight: 1.6,
-                }}>
-                  "Liderlik, bir pozisyon değil —<br />bir sorumluluk bilincidir."
-                </p>
-                <p style={{ fontSize: "11px", letterSpacing: "0.1em", color: "rgba(184,150,12,0.5)", marginTop: "12px", textTransform: "uppercase" }}>
-                  EWP · Executive Workshop Programs
-                </p>
-              </div>
+                — EWP · İstanbul · 2025
+              </p>
+              <p style={{
+                fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
+                fontSize: "22px", fontStyle: "italic", color: "rgba(248,245,239,0.7)", lineHeight: 1.6,
+              }}>
+                "Liderlik, bir pozisyon değil — bir sorumluluk bilincidir."
+              </p>
+              <div style={{ width: "40px", height: "1px", background: "#B8960C", marginTop: "2rem", opacity: 0.4 }} />
             </div>
           </motion.div>
 
