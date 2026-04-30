@@ -35,16 +35,16 @@ export function HeroSection() {
       {/* Top gold line */}
       <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #B8960C 30%, #B8960C 70%, transparent)" }} />
 
-      {/* Main two-column layout */}
+      {/* Main content */}
       <div className="container-wide relative flex flex-1 items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 w-full min-h-screen items-center">
+        <div className="w-full min-h-screen flex items-center">
 
-          {/* LEFT — text content */}
+          {/* Text content */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="flex flex-col justify-center py-32 lg:py-0 pr-0 lg:pr-16"
+            className="flex flex-col justify-center py-32 lg:py-0 max-w-3xl"
           >
             {/* Label */}
             <motion.div variants={fadeInUp} className="mb-10">
@@ -136,37 +136,6 @@ export function HeroSection() {
                 </div>
               ))}
             </motion.div>
-          </motion.div>
-
-          {/* RIGHT — quote panel */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="hidden lg:flex items-center justify-center"
-          >
-            <div style={{
-              padding: "3rem",
-              background: "rgba(184,150,12,0.06)",
-              border: "1px solid rgba(184,150,12,0.15)",
-              borderRadius: "4px",
-              maxWidth: "420px",
-            }}>
-              <p style={{
-                fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-                fontSize: "13px", letterSpacing: "0.2em", textTransform: "uppercase",
-                color: "#B8960C", marginBottom: "1.5rem",
-              }}>
-                — EWP · İstanbul · 2025
-              </p>
-              <p style={{
-                fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-                fontSize: "22px", fontStyle: "italic", color: "rgba(248,245,239,0.7)", lineHeight: 1.6,
-              }}>
-                "Liderlik, bir pozisyon değil — bir sorumluluk bilincidir."
-              </p>
-              <div style={{ width: "40px", height: "1px", background: "#B8960C", marginTop: "2rem", opacity: 0.4 }} />
-            </div>
           </motion.div>
 
         </div>
