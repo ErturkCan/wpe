@@ -161,18 +161,8 @@ export function HeroSection() {
                 borderRadius: "4px",
               }} />
 
-              {/* Center emblem */}
-              <div className="relative flex flex-col items-center gap-6">
-                {/* Gold bracket logo */}
-                <div style={{
-                  fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
-                  fontSize: "80px", fontWeight: 600, color: "rgba(184,150,12,0.15)",
-                  letterSpacing: "-0.02em", lineHeight: 1,
-                  userSelect: "none",
-                }}>
-                  [EWP]
-                </div>
-                <div style={{ width: "1px", height: "60px", background: "linear-gradient(to bottom, #B8960C, transparent)" }} />
+              {/* Center label */}
+              <div className="relative flex flex-col items-center gap-4">
                 <p style={{
                   fontFamily: "'Cormorant Garamond', Garamond, Georgia, serif",
                   fontSize: "12px", letterSpacing: "0.3em", textTransform: "uppercase",
@@ -180,6 +170,7 @@ export function HeroSection() {
                 }}>
                   İstanbul · 2025
                 </p>
+                <div style={{ width: "1px", height: "40px", background: "linear-gradient(to bottom, #B8960C, transparent)" }} />
               </div>
 
               {/* Decorative dots */}
