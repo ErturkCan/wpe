@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma"
 import Link from "next/link"
 import { Plus, Pencil, Eye } from "lucide-react"
 import { formatEventDateShort } from "@/lib/utils"
+import { DeleteEventButton } from "@/components/admin/DeleteEventButton"
 
 export const dynamic = 'force-dynamic'
 
@@ -71,7 +72,7 @@ export default async function AdminEventsPage() {
                       <Link
                         href={`/events/${event.slug}`}
                         className="rounded-lg p-1.5 text-text-muted transition-colors hover:bg-surface hover:text-text-primary"
-                        title="View"
+                        title="Görüntüle"
                       >
                         <Eye className="h-3.5 w-3.5" />
                       </Link>
@@ -79,10 +80,11 @@ export default async function AdminEventsPage() {
                     <Link
                       href={`/admin/events/${event.id}/edit`}
                       className="rounded-lg p-1.5 text-text-muted transition-colors hover:bg-surface hover:text-text-primary"
-                      title="Edit"
+                      title="Düzenle"
                     >
                       <Pencil className="h-3.5 w-3.5" />
                     </Link>
+                    <DeleteEventButton eventId={event.id} eventTitle={event.title} />
                   </div>
                 </td>
               </tr>
